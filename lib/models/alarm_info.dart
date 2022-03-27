@@ -1,0 +1,29 @@
+class AlarmInfo {
+  int id;
+  String title;
+  DateTime alarmDateTime;
+  bool isPending;
+  int gradientColorIndex;
+
+  AlarmInfo(
+      {required this.id,
+      required this.title,
+      required this.alarmDateTime,
+      required this.isPending,
+      required this.gradientColorIndex});
+
+  factory AlarmInfo.fromMap(Map<String, dynamic> json) => AlarmInfo(
+        id: json["id"],
+        title: json["title"],
+        alarmDateTime: DateTime.parse(json["alarmDateTime"]),
+        gradientColorIndex: json["gradientColorIndex"],
+        isPending: true,
+      );
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "alarmDateTime": alarmDateTime.toIso8601String(),
+        "isPending": isPending,
+        "gradientColorIndex": gradientColorIndex,
+      };
+}
